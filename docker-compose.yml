@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  youtube-platform:
+    build: .
+    container_name: youtube-platform
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    volumes:
+      - .:/app
+      - ./data:/app/data
+    ports:
+      - "4040:4040"
+      - "8501:8501"
+      - "8080:8080"
+    environment:
+      - PYTHONPATH=/app
+      - JAVA_HOME=/usr/lib/jvm/default-java
+    stdin_open: true
+    tty: true
